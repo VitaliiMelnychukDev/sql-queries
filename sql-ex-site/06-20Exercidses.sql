@@ -73,49 +73,84 @@ WHERE price = (
 /****************-----------------------------****************/
 
 
-/*  Exercise6 */
+/*  Exercise11 */
+
+SELECT AVG(speed)
+FROM PC;
+
+/* Finished */
+/****************-----------------------------****************/
+
+
+/*  Exercise12 */
+
+SELECT AVG(speed)
+FROM Laptop
+WHERE Laptop.price > 1000;
+
+
+/* Finished */
+/****************-----------------------------****************/
+
+
+/*  Exercise13 */
+
+SELECT AVG(PC.speed)
+FROM PC
+  LEFT JOIN Product ON Product.model = PC.model
+WHERE Product.maker = 'A';
+
+/* Finished */
+/****************-----------------------------****************/
+
+
+/*  Exercise14 */
 
 
 /* Not Finished */
 /****************-----------------------------****************/
 
 
-/*  Exercise6 */
+/*  Exercise15 */
+
+SELECT hd
+FROM PC
+GROUP BY hd
+HAVING count(hd) > 1;
+
+/* Not Finished */
+/****************-----------------------------****************/
+
+
+/*  Exercise16 */
 
 
 /* Not Finished */
 /****************-----------------------------****************/
 
 
-/*  Exercise6 */
+/*  Exercise17*/
 
 
 /* Not Finished */
 /****************-----------------------------****************/
 
 
-/*  Exercise6 */
+/*  Exercise18*/
 
 
 /* Not Finished */
 /****************-----------------------------****************/
 
 
-/*  Exercise6 */
+/*  Exercise19*/
 
 
 /* Not Finished */
 /****************-----------------------------****************/
 
 
-/*  Exercise6 */
-
-
-/* Not Finished */
-/****************-----------------------------****************/
-
-
-/*  Exercise6 */
+/*  Exercise20*/
 
 
 /* Not Finished */
