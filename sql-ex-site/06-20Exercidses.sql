@@ -309,21 +309,57 @@ WHERE type = 'Printer'
 /* Finished */
 /****************-----------------------------****************/
 
+SELECT
+  AVG(price)
+FROM (
+       SELECT price
+       FROM PC
+         LEFT JOIN Product ON Product.model = PC.model
+       WHERE Product.maker = 'A'
+
+       UNION ALL
+       SELECT price
+       FROM Laptop
+         LEFT JOIN Product ON Product.model = Laptop.model
+       WHERE Product.maker = 'A'
+     ) AS maker_a_products;
+
+
 /*  Exercise26*/
 
 
-/* Not Finished */
+/* Finished */
 /****************-----------------------------****************/
 
 /*  Exercise27*/
+
+SELECT
+  Product.maker,
+  AVG(PC.hd)
+FROM PC
+  LEFT JOIN Product ON Product.model = PC.model
+WHERE Product.maker IN (
+  SELECT maker
+  FROM Product
+  WHERE type = 'Printer'
+)
+GROUP BY maker;
 
 
 /* Finished */
 /****************-----------------------------****************/
 /*  Exercise28*/
 
+SELECT
+  count(*) AS count
+FROM (
+       SELECT maker
+       FROM Product
+       GROUP BY maker
+       HAVING count(model) <= 1
+     ) AS maker_with_one_mode;
 
-/* Not Finished */
+/* Finished */
 /****************-----------------------------****************/
 
 /*  Exercise29*/
