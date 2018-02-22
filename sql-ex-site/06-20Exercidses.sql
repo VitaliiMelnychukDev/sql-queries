@@ -380,3 +380,137 @@ FROM (
 /* Not Finished */
 /****************-----------------------------****************/
 
+/*  Exercise31*/
+
+SELECT
+  Classes.class,
+  Classes.country
+FROM Classes
+WHERE Classes.bore >= 16;
+
+/* Finished */
+/****************-----------------------------****************/
+
+/*  Exercise32*/
+
+
+/* Not Finished */
+/****************-----------------------------****************/
+
+/*  Exercise33*/
+
+SELECT
+  Outcomes.ship
+FROM Outcomes
+WHERE Outcomes.battle = 'North Atlantic'
+      AND Outcomes.result = 'sunk';
+
+
+/* Finished */
+/****************-----------------------------****************/
+
+/*  Exercise34*/
+
+SELECT
+  Ships.name
+FROM Ships
+  LEFT JOIN Classes On Ships.class = Classes.class
+WHERE Classes.displacement > 35
+      AND Ships.launched > 1922
+      AND Classes.type = 'bb';
+
+
+/* Not Finished */
+/****************-----------------------------****************/
+
+/*  Exercise35*/
+
+SELECT
+  model,
+  type
+FROM Product
+WHERE model LIKE REPLICATE('[0-9]', len(model))
+      OR model LIKE REPLICATE('[A-Z]', len(model));
+
+
+/* Finished */
+/****************-----------------------------****************/
+
+/*  Exercise36*/
+
+SELECT
+  name
+FROM Ships
+WHERE name = class
+UNION
+SELECT
+  Outcomes.ship
+FROM Outcomes
+  LEFT JOIN Classes ON Classes.class = Outcomes.ship
+WHERE Classes.class = Outcomes.ship;
+
+
+
+/* Finished */
+/****************-----------------------------****************/
+
+/*  Exercise37*/
+
+WITH outcomes_lead_ships AS (
+SELECT
+Outcomes.ship
+FROM Outcomes
+LEFT JOIN Classes ON Classes.class = Outcomes.ship
+WHERE Classes.class = Outcomes.ship
+)
+
+SELECT
+  class
+FROM Ships
+GROUP BY class
+Having count(*) = 1
+       AND class NOT IN (
+  SELECT *
+  FROM outcomes_lead_ships
+)
+
+UNION
+SELECT *
+FROM outcomes_lead_ships
+Where ship NOT IN (
+  SELECT
+    DISTINCT Ships.class
+  FROM Ships
+);
+
+
+
+/* Not Finished */
+/****************-----------------------------****************/
+
+/*  Exercise38*/
+
+SELECT country
+FROM Classes
+WHERE type = 'bb'
+INTERSECT
+SELECT country
+FROM Classes
+WHERE type = 'bc'
+
+
+/* Finished */
+/****************-----------------------------****************/
+
+/*  Exercise39*/
+
+
+/* Not Finished */
+/****************-----------------------------****************/
+
+/*  Exercise40*/
+
+
+/* Not Finished */
+/****************-----------------------------****************/
+
