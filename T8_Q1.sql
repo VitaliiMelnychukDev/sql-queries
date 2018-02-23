@@ -40,7 +40,7 @@ CREATE EVENT `ev_rise_counter`
 DO
   BEGIN
     UPDATE `test_procedure`
-    SET `counter` = `counter` + 1
+    SET `count` = `count` + 1
     WHERE `name` != NULL;
   END;
 //
